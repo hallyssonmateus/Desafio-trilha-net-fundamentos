@@ -49,6 +49,30 @@ namespace DesafioFundamentos.Models
             }
         }
 
+        public void AtualizarVeiculo()
+        {
+            Console.WriteLine("Digite a placa atual do veículo que deseja atualizar:");
+            string placaAtual = Console.ReadLine();
+            // Verifica se o veículo existe
+    if (veiculos.Any(x => x.ToUpper() == placaAtual.ToUpper()))
+    {
+        Console.WriteLine("Digite a nova placa do veículo:");
+        string novaPlaca = Console.ReadLine();
+
+        // Remove a placa antiga e adiciona a nova
+        int indice = veiculos.IndexOf(placaAtual);
+        if (indice >= 0)
+        {
+            veiculos[indice] = novaPlaca;
+            Console.WriteLine($"A placa do veículo foi atualizada de {placaAtual} para {novaPlaca}.");
+        }
+    }
+    else
+    {
+        Console.WriteLine("Desculpe, esse veículo não está estacionado aqui. Confira se digitou a placa corretamente.");
+    }
+        }
+
         public void ListarVeiculos()
         {
             // Verifica se há veículos no estacionamento
